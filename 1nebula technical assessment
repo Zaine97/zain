@@ -122,3 +122,11 @@ secondDiv: Orange. //The first div will be red because of the red-card class, an
 document.getElementById("firstDiv").style.backgroundColor = "pink";
 3. How would you dynamically target secondDiv and add the yellow-card class to its class list?
 document.getElementById("secondDiv").classList.add("yellow-card");
+
+Question 2: JavaScript Type Checking
+Why will compareIt(5, "5") return true?
+
+Because == only checks for value equality and performs type coercion.
+when using == in JavaScript, it only checks whether the values are equal, but it doesn’t care about the types. This is called type coercion, which means JavaScript tries to convert the values to the same type before comparing them
+5 == "5" // true
+
