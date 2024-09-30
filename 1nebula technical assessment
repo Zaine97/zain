@@ -135,3 +135,79 @@ when using == in JavaScript, it only checks whether the values are equal, but it
 function compareIt(num1, num2) {
     return num1 === num2;  // Strict equality check
 }
+
+3
+To make a webpage mobile-friendly (responsive), the layout must adjust automatically depending on the device screen size. following these techniques you'll never go wrong 
+
+--Use a responsive meta tag: Add the following line inside the <head> section of your HTML to ensure the page scales correctly on mobile devices.
+CODE EXAMPLE 
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+-- Use CSS Media Queries: Media queries allow you to apply different styles depending on the screen size.
+
+@media (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+}
+--Fluid Layouts and Flexbox/Grid
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 600px) {
+  .container {
+    flex-direction: row;
+  }
+}
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 600px) {
+  .container {
+    flex-direction: row;
+  }
+}
+-- Responsive Images
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+2.
+> What is the benefit of bundling .js scripts into one files
+answer 
+Reduced HTTP Requests.
+Improved Caching.
+Better Performance.
+3.
+What needs to be done to ensure the browser understands Sass styling?
+answer 
+Install and compile Sass.
+sass styles.scss styles.css
+
+Link the compiled CSS in your HTML.
+
+<link rel="stylesheet" href="styles.css">
+4.
+What should be done to ensure browser compatibility with newer flavors of JavaScript like ES6/7?
+
+answer 
+Use Babel (JavaScript Compiler): Babel is a tool that compiles newer JavaScript versions
+example code: 
+npm install @babel/core @babel/preset-env
+{
+  "presets": ["@babel/preset-env"]
+}
+Use Polyfills
+
+Polyfills are scripts that add functionality to older browsers that don’t support certain newer features.
+
+Example code 
+npm install core-js
+
+Then last check browser compatibility.
+
