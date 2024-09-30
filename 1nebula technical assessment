@@ -1,0 +1,124 @@
+QUESTION 2
+
+SCRIPT
+
+// I Created the Employee table from the CSV file i was given
+
+CREATE TABLE Employee (
+    EmployeeID UUID PRIMARY KEY,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    Gender VARCHAR(10),
+    Email VARCHAR(100),
+    Age INT,
+    Birthday DATE,
+    Active BOOLEAN,
+    Street VARCHAR(100),
+    Postal VARCHAR(10),
+    Province VARCHAR(50),
+    City VARCHAR(50),
+    Longitude FLOAT,
+    Latitude FLOAT,
+    PackageID UUID,
+    VendorID UUID,
+    Phone VARCHAR(15),
+    PackageCost DECIMAL(10, 2),
+    ContractStart DATE,
+    ContractEnd DATE
+);
+
+// This will Update all emails to have 'company' as the host,as it be keeping the domain unchanged
+UPDATE Employee
+SET Email = 
+    CONCAT(
+        SUBSTRING(Email, 1, POSITION('@' IN Email) - 1),
+        '@company',
+        SUBSTRING(Email, POSITION('.' IN Email), LENGTH(Email))
+    );
+
+
+Back-end Code Challenges
+Question 1
+
+public string Likes(List<string> names)
+{
+    // Get the number of names in the list
+    int count = names.Count;
+
+    // switch statement to determine the appropriate message based on the count of names
+    switch (count)
+    {
+        case 0:
+            // If there are no names, return this message
+            return "no one likes this";
+        case 1:
+            // If there is one name, it will return that name with the message
+            return $"{names[0]} likes this";
+        case 2:
+            // If there are two names, it will return both names with the message
+            return $"{names[0]} and {names[1]} like this";
+        case 3:
+            // If there are three names, it will return all three names with the message
+            return $"{names[0]}, {names[1]} and {names[2]} like this";
+        default:
+            // If there are four or more names, it will return the first two names and the count of others
+            return $"{names[0]}, {names[1]} and {count - 2} others like this";
+    }
+}
+
+Question 2
+
+
+public interface IRobotService
+{
+    Robot BuildRobot(RobotType robotType, List<Parts> parts);
+}
+
+public interface ICarService
+{
+    Car BuildCar(CarType carType, List<Parts> parts);
+}
+
+public interface IPartsService
+{
+    List<Parts> GetParts(Enum type);
+}
+
+public class Factory
+{
+    private readonly IRobotService _robotService;
+    private readonly ICarService _carService;
+    private readonly IPartsService _partsService;
+
+    // Constructor dependency injection for services
+    public Factory(IRobotService robotService, ICarService carService, IPartsService partsService)
+    {
+        _robotService = robotService;
+        _carService = carService;
+        _partsService = partsService;
+    }
+
+    // Method to build a robot based on the robot type
+    public Robot BuildRobot(RobotType robotType)
+    {
+        var parts = _partsService.GetParts(robotType);
+        return _robotService.BuildRobot(robotType, parts);
+    }
+
+    // Method to build a car based on the car type
+    public Car BuildCar(CarType carType)
+    {
+        var parts = _partsService.GetParts(carType);
+        return _carService.BuildCar(carType, parts);
+    }
+}
+Front-end Code Challenges
+Question 1
+1. What will the color of both div elements be?
+firstDiv: Red
+secondDiv: Orange. //The first div will be red because of the red-card class, and the second div will be orange because its ID-specific style overrides the class.
+
+2. How would you dynamically target firstDiv and make its color pink?
+document.getElementById("firstDiv").style.backgroundColor = "pink";
+3. How would you dynamically target secondDiv and add the yellow-card class to its class list?
+document.getElementById("secondDiv").classList.add("yellow-card");
