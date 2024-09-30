@@ -130,3 +130,8 @@ Because == only checks for value equality and performs type coercion.
 when using == in JavaScript, it only checks whether the values are equal, but it doesn’t care about the types. This is called type coercion, which means JavaScript tries to convert the values to the same type before comparing them
 5 == "5" // true
 
+2. How could one change this function so that data types are checked as well as values?
+
+function compareIt(num1, num2) {
+    return num1 === num2;  // Strict equality check
+}
